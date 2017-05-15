@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-  apiKey: 'AIzaSyDvWTkIubkb5C_Y0nlpIA5we9zvzeg-nis',
-  authDomain: 'pokemon-app-24e69.firebaseapp.com',
-  databaseURL: 'https://pokemon-app-24e69.firebaseio.com',
-  projectId: 'pokemon-app-24e69',
-  storageBucket: 'pokemon-app-24e69.appspot.com',
-  messagingSenderId: '575171609804'
-}
+    apiKey: "AIzaSyBtn3W8X9dHOI-3YW7X52myU1rViyWLNRU",
+    authDomain: "trem-das-onze.firebaseapp.com",
+    databaseURL: "https://trem-das-onze.firebaseio.com",
+    projectId: "trem-das-onze",
+    storageBucket: "trem-das-onze.appspot.com",
+    messagingSenderId: "205184699864"
+  }
 };
