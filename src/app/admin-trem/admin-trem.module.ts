@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminTremRoutingModule } from './admin-trem-routing.module';
 import { AddProgramaComponent } from './add-programa/add-programa.component';
+import { AdiminComponent } from './admin.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [AddProgramaComponent]
+  declarations: [AddProgramaComponent, AdiminComponent]
 })
 export class AdminTremModule { }

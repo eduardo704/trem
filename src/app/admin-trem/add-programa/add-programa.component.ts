@@ -12,6 +12,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class AddProgramaComponent implements OnInit {
   user: Observable<firebase.User>;
   form: FormGroup;
+  loggedInForm: FormGroup;
+  userAsync = { displayName: '' };
 
   constructor(public afAuth: AngularFireAuth, private formBuilder: FormBuilder) {
     this.user = afAuth.authState;
@@ -24,17 +26,33 @@ export class AddProgramaComponent implements OnInit {
         userName: ['', [Validators.email, Validators.required]],
         password: ['', Validators.required],
       });
+
+    this.afAuth.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.prefilLoggedin(user);
+      }
+    });
   }
 
   login() {
-    console.log(this.form.controls.userName.value, this.form.controls.password.value)
-    firebase.auth().signInWithEmailAndPassword(this.form.controls.userName.value, this.form.controls.password.value).catch(function (error) {
-   
-    });
+    firebase.auth().signInWithEmailAndPassword(this.form.controls.userName.value, this.form.controls.password.value);
   }
 
   logout() {
     firebase.auth().signOut();
+  }
+
+  prefilLoggedin(user) {
+    this.loggedInForm = this
+      .formBuilder
+      .group({
+        displayName: [user.displayName || '', [Validators.required]]
+      });
+  }
+  alterarNome() {
+    const user = this.afAuth.auth.currentUser;
+    const newName = { displayName: this.loggedInForm.controls.displayName.value, photoURL: user.photoURL }
+    user.updateProfile(newName);
   }
 
 }
