@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-add-programa',
@@ -10,49 +10,42 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./add-programa.component.scss']
 })
 export class AddProgramaComponent implements OnInit {
-  user: Observable<firebase.User>;
-  form: FormGroup;
-  loggedInForm: FormGroup;
-  userAsync = { displayName: '' };
+  postObservable: FirebaseObjectObservable<any>;
+  listObservable: FirebaseListObservable<any>;
 
-  constructor(public afAuth: AngularFireAuth, private formBuilder: FormBuilder) {
-    this.user = afAuth.authState;
+  form: FormGroup;
+
+
+  constructor(private db: AngularFireDatabase, private formBuilder: FormBuilder, private afAuth: AngularFireAuth) {
   }
+
+
 
   ngOnInit() {
     this.form = this
       .formBuilder
       .group({
-        userName: ['', [Validators.email, Validators.required]],
-        password: ['', Validators.required],
+        titulo: ['', Validators.required],
+        desc: ['', Validators.required],
+        audio: ['', Validators.required],
+        data: ['', Validators.required],
       });
 
-    this.afAuth.auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.prefilLoggedin(user);
-      }
-    });
+    this.listObservable = this
+      .db
+      .list('/posts/');
   }
 
-  login() {
-    firebase.auth().signInWithEmailAndPassword(this.form.controls.userName.value, this.form.controls.password.value);
+  salvar() {
+    console.log(this.form.value);
+    let post = Object.assign({}, this.form.value);
+    const uid = this.afAuth.auth.currentUser.uid;
+    post['author'] = uid;
+    const key = this.listObservable.push(post).key;
+
+    this.db.object('/users/' + uid + '/posts/' + key).set('post');
+
   }
 
-  logout() {
-    firebase.auth().signOut();
-  }
-
-  prefilLoggedin(user) {
-    this.loggedInForm = this
-      .formBuilder
-      .group({
-        displayName: [user.displayName || '', [Validators.required]]
-      });
-  }
-  alterarNome() {
-    const user = this.afAuth.auth.currentUser;
-    const newName = { displayName: this.loggedInForm.controls.displayName.value, photoURL: user.photoURL }
-    user.updateProfile(newName);
-  }
 
 }

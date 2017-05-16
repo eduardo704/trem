@@ -6,6 +6,7 @@ import { AddProgramaComponent } from './add-programa/add-programa.component';
 import { AdiminComponent } from './admin.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [AddProgramaComponent, AdiminComponent]
+  declarations: [AddProgramaComponent, AdiminComponent, EditProfileComponent]
 })
 export class AdminTremModule { }

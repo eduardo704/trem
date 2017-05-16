@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddProgramaComponent } from './add-programa/add-programa.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AdiminComponent } from './admin.component';
 
 const routes: Routes =
@@ -10,8 +11,12 @@ const routes: Routes =
       component: AdiminComponent,
       children: [
         {
-          path: '',
+          path: 'adicionar',
           component: AddProgramaComponent,
+        },
+        {
+          path: 'editar-perfil',
+          component: EditProfileComponent,
         }
       ]
     }

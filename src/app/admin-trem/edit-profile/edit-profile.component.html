@@ -1,0 +1,18 @@
+<div class="row flex-container align-end">
+    <div class="col-sm-8 col-sm-offset-1">
+        <form novalidate [formGroup]="loggedInForm" class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Nome:</label>
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <input type="text" formControlName="displayName" class="form-control">
+                        <span class="input-group-btn">
+                    <button type="button" [disabled]="loggedInForm.invalid" (click)='alterarNome()' class="btn  btn-default btn-block ">Alterar</button>
+               </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
