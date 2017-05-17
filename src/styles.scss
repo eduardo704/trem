@@ -1,12 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
-
-// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Raleway');
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+$font-family-sans-serif:  'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif ;
+$font-family-serif:      'Merriweather',  Georgia, "Times New Roman", Times, serif;
+$headings-font-family: $font-family-sans-serif;
 @import 'bs-theme';
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-@import '_bs-theme.scss';
-@import 'bs-theme';
-// $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+
+
+
+
+body{
+    min-height: 100vh;
+    position: relative;
+    margin: 0;    
+}
+
 .flex-container {
     display: flex;
 }
