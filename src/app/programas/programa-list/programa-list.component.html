@@ -1,0 +1,33 @@
+<div *ngFor="let post of listObservable  | async" class="container">
+  <div class="panel panel-default text-center col-sm-8 programa-container">
+    <div class="panel-body">
+      <div>
+        <h4>{{post.titulo}}</h4>
+      </div>
+      <div>
+        <p>{{post.desc}}</p>
+      </div>
+      <div><img src="http://teknoseyir.com/wp-content/uploads/2015/10/2858e0d6-f1bd-48a5-93a9-f1fb70a8547b.jpg" class="img-responsive"></div>
+
+      <hr>
+      <div>
+        <h2>Ouca o programa: </h2>
+        <audio class="col-sm-12" controls>
+          <source src="https://ia601209.us.archive.org/31/items/TremDasOnze19DeSetembroDe2016SegundaFrankensteinPiloto/Trem%20das%20Onze%2019%20de%20setembro%20de%202016%20Segunda%20Frankenstein%20piloto.mp3"
+          />
+        </audio>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="pull-left media">
+            <img class="img-responsive" src="https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/person-512.png" alt="...">
+          </div>
+          <div class="pull-right"><br>
+            <b><a >{{post.author}}</a></b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

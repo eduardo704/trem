@@ -11,6 +11,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable 
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { IndexComponent } from './index/index.component';
+import { ProgramasModule } from './programas/programas.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { IndexComponent } from './index/index.component';
     FormsModule,
     HttpModule,
     AdminTremModule,
+    ProgramasModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

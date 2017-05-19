@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
+
+import 'rxjs/Rx';
 import * as firebase from 'firebase/app';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { ErroAuthPt } from './erro-auth-pt.enum';
 
 
 @Component({
@@ -19,14 +23,18 @@ export class AdiminComponent implements OnInit {
   userAsync = { displayName: '' };
   userListObservable: FirebaseListObservable<any>;
   userObservable: FirebaseObjectObservable<any>;
+  messageError = '';
 
-
+  loading = new Subject();
+  carregando = false;
   constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder, private db: AngularFireDatabase) {
-    this.user = afAuth.authState;
+
+
   }
 
   ngOnInit() {
-
+    this.loading.next(true);
+    this.user = this.afAuth.authState;
     this.form = this
       .formBuilder
       .group({
@@ -35,7 +43,9 @@ export class AdiminComponent implements OnInit {
       });
 
     this.afAuth.auth.onAuthStateChanged((user) => {
-      console.log(user)
+      this.carregando = true
+      this.loading.next(false);
+      console.log(user);
 
       if (user) {
         this.prefilLoggedin(user);
@@ -50,7 +60,14 @@ export class AdiminComponent implements OnInit {
   }
 
   login() {
-    firebase.auth().signInWithEmailAndPassword(this.form.controls.userName.value, this.form.controls.password.value);
+    firebase.auth().signInWithEmailAndPassword(this.form.controls.userName.value, this.form.controls.password.value)
+      .then(result => {
+        this.messageError = '';
+      })
+      .catch(error => {
+        console.log(error['code']);
+        this.messageError = ErroAuthPt.convertMessage(error['code']);
+      });
   }
 
   logout() {
