@@ -12,6 +12,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { IndexComponent } from './index/index.component';
 import { ProgramasModule } from './programas/programas.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProgramasModule } from './programas/programas.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     AdminTremModule,
     ProgramasModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

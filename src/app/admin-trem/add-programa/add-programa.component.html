@@ -14,24 +14,36 @@
                         <div class="form-group">
                             <label for="inputDesc" class="col-lg-2 control-label">Descrição</label>
                             <div class="col-lg-10">
-                                <textarea formControlName="desc" type="textArea" class="form-control" id="inputDesc" placeholder="Descrição">
+                                <textarea formControlName="desc" type="textArea" class="form-control" id="inputDesc" rows="10" placeholder="Descrição">
                                 </textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputAudio" class="col-lg-2 control-label">Link do audio</label>
                             <div class="col-lg-10">
-                                <input formControlName="audio" type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                <input formControlName="audio" type="text" class="form-control" id="inputEmail" placeholder="Audio">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputImagem" class="col-lg-2 control-label">Link da Imagem</label>
+                            <div class="col-lg-10">
+                                <input formControlName="imagem" type="text" class="form-control" id="inputImagem" placeholder="Imagem">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail" class="col-lg-2 control-label">Data</label>
                             <div class="col-lg-10">
-                                <input formControlName="data" type="date" class="form-control" id="inputEmail" placeholder="Email">
+                                <input formControlName="data" type="date" class="form-control" id="inputEmail" placeholder="Data">
                             </div>
                         </div>
-                        <button [disabled]="form.invalid" type="button" class="btn btn-primary submit-button" (click)="salvar()">Submit</button>
-                        <button type="button" class="btn btn-primary submit-button" data-toggle="modal" data-target="#myModal" (click)="abrir()">Abrir</button>
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-8">
+                                <button type="button" [disabled]="form.invalid" class=" col-sm-8 btn btn-block btn-success submit-button" (click)="abrir()">Salvar</button>
+                            </div>
+                        </div>
+                        <!--<button [disabled]="form.invalid" type="button" class="btn btn- submit-button" (click)="salvar()">Submit</button>-->
+
                     </fieldset>
                 </form>
             </div>
@@ -40,37 +52,25 @@
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        Programa Salvo com sucesso: {{ultimoPrograma|json}}
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Preview Do programa</h4>
+            </div>
+            <div class="modal-body">
+                <!--<app-programa-card></app-programa-card>-->
+                <div *ngIf="preview">
+                    <app-programa-card [programa]="ultimoPrograma"></app-programa-card>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <label for="">Deseja Salvar o Programa:</label>
+                <button type="button" class="btn btn-danger btn-lg">Não</button>
+                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Sim</button>
 
-        
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            </div>
         </div>
-        
-      </div>
-      <div class="modal-footer">
-          Deseja Salvar outro programa:
-        <button type="button" class="btn btn-default" data-dismiss="modal">Sim</button>
-        <button type="button" class="btn btn-primary">Nao</button>
-      </div>
     </div>
-  </div>
 </div>
+https://ia601204.us.archive.org/31/items/TremDasOnze23DeAgostoDe2016SessoTremDasOnzeAEncruzilhadaENelsonCavaquinho/Trem%20das%20Onze%2023%20de%20agosto%20de%202016%20Sess%C3%A3o%20Trem%20das%20Onze%20A%20Encruzilhada%20e%20Nelson%20Cavaquinho.mp3<br>https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-0/s640x640/18527885_2288260371399214_2681176027033023945_n.jpg?oh=4de372eae8575cb3a5487b28d58d7755&oe=59BBBF2D

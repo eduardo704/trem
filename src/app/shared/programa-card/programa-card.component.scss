@@ -1,0 +1,113 @@
+@import '~scss/bs-theme';
+@import '~scss/image-hover/imagehover';
+.media img {
+    width: 60px;
+    height: 60px;
+}
+
+.programa-container {
+    margin: 2em auto;
+    //margin-bottom: 2em;
+}
+
+.programa-header:hover {
+    color: $brand-primary;
+    cursor: pointer;
+}
+
+a:hover {
+    color: $brand-primary;
+    cursor: pointer;
+}
+
+h2 {
+    margin: 0;
+}
+
+.container-img {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    // height: 400px;
+}
+
+.middle {
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+    font-size: 16px;
+    color: $brand-primary;
+}
+
+.container-img:hover .image {
+    opacity: 0.3;
+}
+
+.container-img:hover .bg-img {
+    opacity: 0.3;
+}
+
+.container-img:hover .middle {
+    opacity: 1;
+}
+
+span.text-content {
+    background: rgba(0, 0, 0, 0.5);
+    color: $brand-primary;
+    cursor: pointer;
+    display: table;
+    height: 400px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+span.text-content:hover {
+    opacity: 1;
+}
+
+span.text-content span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.bg-img {
+    width: 100%;
+    height: 400px;
+    background-image: url(https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/18557324_2290076514550933_8013656340913075135_n.png?oh=71e8afe67d309246060a702b0e339567&oe=59B9C4DB);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 0;
+}
+
+.img-solo {
+    height: 400px!important;
+    width: auto!important;
+}

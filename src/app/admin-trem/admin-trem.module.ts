@@ -8,13 +8,15 @@ import { AdiminComponent } from './admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { IndexAdminComponent } from './index-admin/index-admin.component';
+import {ProgramasModule} from '../programas/programas.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminTremRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProgramasModule
   ],
   declarations: [
     AddProgramaComponent,

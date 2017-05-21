@@ -1,0 +1,51 @@
+<div class="panel panel-default text-center programa-container">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="programa-header" (click)='goDetalhes(programa)'>{{programa.titulo}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>{{programa.data | date}}</h4>
+            </div>
+        </div>
+
+        <div class="container-img">
+            <img [src]="imagemSrc" alt="Avatar" class="image">
+
+            <span class="text-content">
+                    <span class="text">{{programa.desc}}</span>
+            </span>
+        </div>
+        <!--<div class="container-img">
+
+                <div class="bg-img image"></div>
+                <span class="text-content">
+                    <span class="text">{{programa.desc}}</span>
+                </span>
+            </div>-->
+
+        <hr class="margin-top-2 margin-bottom-2">
+        <div class="row margin-top-1">
+            <div class="col-sm-12">
+                <h2>Ouça o programa: </h2>
+            </div>
+        </div>
+        <div class="row margin-top-1">
+            <div class="col-sm-12">
+                <audio class="col-sm-12" controls>
+                        <source [src]='audioSrc'/>
+                    </audio>
+            </div>
+        </div>
+
+        <div class="row margin-top-2">
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <b><a >Enviado por: {{programa.authorObj?.displayName}}</a></b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules, PreloadingStrategy } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { ProgramaListComponent } from './programas/programa-list/programa-list.component';
+import { ProgramaDetailComponent } from './programas/programa-detail/programa-detail.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
   { path: '', component: IndexComponent },
   { path: 'admin', loadChildren: 'app/admin-trem/admin-trem.module#AdminTremModule' },
   { path: 'programas', component: ProgramaListComponent },
+  { path: 'programa/:id', component: ProgramaDetailComponent },
   // { path: '', redirectTo: '/index', pathMatch: 'full' },
 ];
 

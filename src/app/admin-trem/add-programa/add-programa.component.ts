@@ -15,7 +15,7 @@ export class AddProgramaComponent implements OnInit {
 
   form: FormGroup;
   ultimoPrograma;
-
+  preview = false;
 
   constructor(private db: AngularFireDatabase, private formBuilder: FormBuilder, private afAuth: AngularFireAuth) {
   }
@@ -29,6 +29,7 @@ export class AddProgramaComponent implements OnInit {
         titulo: ['', Validators.required],
         desc: ['', Validators.required],
         audio: ['', Validators.required],
+        imagem: ['', Validators.required],
         data: ['', Validators.required],
       });
 
@@ -38,25 +39,22 @@ export class AddProgramaComponent implements OnInit {
   }
 
   salvar() {
+    this.preview = true;
     console.log(this.form.value);
     this.ultimoPrograma = Object.assign({}, this.form.value);
     const uid = this.afAuth.auth.currentUser.uid;
     this.ultimoPrograma['author'] = uid;
     const key = this.listObservable.push(this.ultimoPrograma).key;
     $('#myModal').modal();
-    // this.db.object('/users/' + uid + '/posts/' + key).set('post')
-    //   .then(result => {
-    //     alert('Programa salvo')
-    //   })
-    //   .catch(error => {
-    //     alert('erro:' + error)
-    //   });
-
   }
 
 
   abrir() {
-
+    this.preview = true;
+    this.ultimoPrograma = Object.assign({}, this.form.value);
+    const uid = this.afAuth.auth.currentUser.uid;
+    this.ultimoPrograma['author'] = uid;
+    $('#myModal').modal();
   }
 
 }
