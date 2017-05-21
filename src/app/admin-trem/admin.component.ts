@@ -29,7 +29,7 @@ export class AdiminComponent implements OnInit {
   carregando = false;
   constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder, private db: AngularFireDatabase) {
 
-
+   
   }
 
   ngOnInit() {
@@ -43,7 +43,7 @@ export class AdiminComponent implements OnInit {
       });
 
     this.afAuth.auth.onAuthStateChanged((user) => {
-      this.carregando = true
+      this.carregando = true;
       this.loading.next(false);
       console.log(user);
 

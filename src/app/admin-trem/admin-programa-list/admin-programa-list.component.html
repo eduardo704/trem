@@ -1,0 +1,23 @@
+<div class="col-sm-8  ">
+  <div class="panel panel-primary">
+    <div class="panel-heading header-programas">
+      <h3 class="panel-title">Programas</h3>
+      <div class="pull-right">
+        <a class="clickable filter"(click)="filtrar=!filtrar" data-toggle="tooltip" title="Filtrar" data-container="body">
+         <span> <i class="glyphicon glyphicon-filter"></i></span>
+        </a>
+      </div>
+    </div>
+    <div class="panel-body">
+        <p>{{values}}</p>
+      <input *ngIf="filtrar" type="text" (keyup)="onKey($event)" class="form-control margin-bottom-1" id="table-filter"
+        placeholder="Filtrar Programas" />
+
+     
+      <div *ngFor="let programa of programas |async   ">
+
+        <app-programa-card [programa]="programa"></app-programa-card>
+      </div>
+    </div>
+  </div>
+</div>

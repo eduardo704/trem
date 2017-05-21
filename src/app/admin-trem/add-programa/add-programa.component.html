@@ -16,6 +16,7 @@
                             <div class="col-lg-10">
                                 <textarea formControlName="desc" type="textArea" class="form-control" id="inputDesc" rows="10" placeholder="Descrição">
                                 </textarea>
+                               Máximo 600 characteres: Atual({{form.controls.desc.value.length}})
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,6 +51,7 @@
         </div>
     </div>
 </div>
+<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" (click)="confirmar()">Sim</button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -66,11 +68,14 @@
             </div>
             <div class="modal-footer">
                 <label for="">Deseja Salvar o Programa:</label>
-                <button type="button" class="btn btn-danger btn-lg">Não</button>
-                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-danger btn-lg"   data-dismiss="modal" >Não</button>
+                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" (click)="confirmar()">Sim</button>
 
             </div>
         </div>
     </div>
 </div>
+
+<p-growl [(value)]="msgs"></p-growl>
 https://ia601204.us.archive.org/31/items/TremDasOnze23DeAgostoDe2016SessoTremDasOnzeAEncruzilhadaENelsonCavaquinho/Trem%20das%20Onze%2023%20de%20agosto%20de%202016%20Sess%C3%A3o%20Trem%20das%20Onze%20A%20Encruzilhada%20e%20Nelson%20Cavaquinho.mp3<br>https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-0/s640x640/18527885_2288260371399214_2681176027033023945_n.jpg?oh=4de372eae8575cb3a5487b28d58d7755&oe=59BBBF2D
+
