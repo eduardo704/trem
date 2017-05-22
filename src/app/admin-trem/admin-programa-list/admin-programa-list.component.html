@@ -1,22 +1,37 @@
-<div class="col-sm-8  ">
-  <div class="panel panel-primary">
-    <div class="panel-heading header-programas">
-      <h3 class="panel-title">Programas</h3>
-      <div class="pull-right">
-        <a class="clickable filter"(click)="filtrar=!filtrar" data-toggle="tooltip" title="Filtrar" data-container="body">
-         <span> <i class="glyphicon glyphicon-filter"></i></span>
-        </a>
+<div class="row">
+  <div class="col-sm-12  ">
+    <div class="panel panel-primary">
+      <div class="panel-heading header-programas">
+        <h3 class="panel-title">Programas</h3>
+        <div class="pull-right">
+          <a class="clickable filter" (click)="filtrar=!filtrar" data-toggle="tooltip" title="Filtrar" data-container="body">
+            <span> <i class="glyphicon glyphicon-filter"></i></span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="panel-body">
+      <div class="panel-body">
         <p>{{values}}</p>
-      <input *ngIf="filtrar" type="text" (keyup)="onKey($event)" class="form-control margin-bottom-1" id="table-filter"
-        placeholder="Filtrar Programas" />
+        <input #filtroGlobal *ngIf="filtrar" type="text" class="form-control margin-bottom-1" id="table-filter" placeholder="Filtrar Programas"
+        />
 
-     
-      <div *ngFor="let programa of programas |async   ">
 
-        <app-programa-card [programa]="programa"></app-programa-card>
+        <p-dataTable [(selection)]="programa" [globalFilter]="filtroGlobal" sortable="true" [rows]="10" [paginator]="true" [value]="programas|async ">
+          <p-column field="titulo" header="Titulo"></p-column>
+          <p-column field="audio" header="Audio"></p-column>
+          <p-column field="imagem" header="imagem"></p-column>
+          <p-column field="data" header="Data do Programa"></p-column>
+          <p-column styleClass="col-button" header="Ações">
+            <ng-template let-programa="rowData" pTemplate="body">
+              <a (click)="selecionarPrograma(programa)" class="btn icon-btn btn-success">
+                <i class="btn-glyphicon fa fa-pencil-square-o img-circle text-success" aria-hidden="true"></i>
+              Editar
+              </a>
+              <a (click)="selecionarPrograma(programa)" class="btn icon-btn btn-danger">
+                <i class="btn-glyphicon fa fa-pencil-square-o img-circle text-danger" aria-hidden="true"></i> Excluir
+              </a>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
       </div>
     </div>
   </div>

@@ -23,17 +23,8 @@ export class AdminProgramaListComponent implements OnInit {
       .list('/posts/');
   }
 
-  onKey(event: any) { // without type info
-    const values = event.target.value.toLowerCase();
-    this.programas.filter((programa, index) => {
-
-      const pString = JSON.stringify(programa).toLowerCase();
-      // pString
-
-      return pString.includes(values);
-
-
-    })
+  selecionarPrograma(programa) {
+    console.log(programa);
   }
 
 }

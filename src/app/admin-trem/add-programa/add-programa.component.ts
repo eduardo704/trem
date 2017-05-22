@@ -44,18 +44,15 @@ export class AddProgramaComponent implements OnInit {
       .list('/posts/');
   }
 
- 
-
-
   confirmar() {
-    this.msgs.push({ severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks' });
-    this.router.navigate(['/admin']);
-    // const programaPraEnviar = Object.assign({}, this.form.value);
-    // this.listObservable.push(programaPraEnviar).then(success => {
-    //   this.router.navigate(['/admin']);
-    // });
-  }
 
+    const programaPraEnviar = Object.assign({}, this.form.value);
+    this.listObservable.push(programaPraEnviar).then(success => {
+      this.router.navigate(['/admin']).then(a => {
+        this.msgs.push({ severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks' });
+      });
+    });
+  }
 
   abrir() {
     this.preview = true;

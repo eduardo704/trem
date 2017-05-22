@@ -1,13 +1,20 @@
-.header-programas{
-    display: flex;
-    justify-content: space-between;
+.header-programas {
+  display: flex;
+  justify-content: space-between;
 }
 
-.clickable.filter{
-    color: white;
-    cursor: pointer;
+.clickable.filter {
+  color: white;
+  cursor: pointer;
 }
 
-.clickable.filter:hover{
-    color: white;
+.clickable.filter:hover {
+  color: white;
 }
+
+.col-button {
+  width: 10%;
+  text-align: center;
+}
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
