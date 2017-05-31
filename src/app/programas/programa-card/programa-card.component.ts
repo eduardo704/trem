@@ -1,5 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { Programa } from '../../shared/interfaces';
+
+
 declare var $: any;
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
@@ -10,15 +13,15 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable,
 })
 export class ProgramaCardComponent implements OnChanges {
 
-  @Input('programa') programa;
+  @Input('programa') programa: Programa;
 
   constructor(private db: AngularFireDatabase, private router: Router) { }
 
 
   ngOnChanges() {
-    this.programa.imagemUrl = `url(${this.programa.imagem})`;
-    this.programa.authorS = this.getAutohorById(this.programa.author).subscribe(author => {
-      this.programa.authorObj = author;
+    this.programa.imagem = `url(${this.programa.imagem})`;
+    this.getAutohorById(this.programa.author).subscribe(author => {
+      this.programa.author = author;
     });
   }
 

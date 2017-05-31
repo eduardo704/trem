@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { Programa } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-programa-detail',
@@ -9,7 +9,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable,
   styleUrls: ['./programa-detail.component.scss']
 })
 export class ProgramaDetailComponent implements OnInit {
-  programa;
+  programa: Programa;
   constructor(private db: AngularFireDatabase, private router: Router, private route: ActivatedRoute, ) { }
 
   ngOnInit() {

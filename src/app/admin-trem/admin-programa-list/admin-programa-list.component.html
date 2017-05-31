@@ -9,24 +9,27 @@
           </a>
         </div>
       </div>
-      <div class="panel-body">
+      <div class="panel-body text-center">
         <p>{{values}}</p>
         <input #filtroGlobal *ngIf="filtrar" type="text" class="form-control margin-bottom-1" id="table-filter" placeholder="Filtrar Programas"
         />
 
-
         <p-dataTable [(selection)]="programa" [globalFilter]="filtroGlobal" sortable="true" [rows]="10" [paginator]="true" [value]="programas|async ">
           <p-column field="titulo" header="Titulo"></p-column>
-          <p-column field="audio" header="Audio"></p-column>
-          <p-column field="imagem" header="imagem"></p-column>
           <p-column field="data" header="Data do Programa"></p-column>
+          <p-column styleClass="col-button" header="Ouvir">
+            <ng-template let-programa="rowData" pTemplate="body">
+              <audio class="col-sm-12" controls preload="true">
+                <source [src]='programa.audio' />
+              </audio>
+            </ng-template>
+          </p-column>
           <p-column styleClass="col-button" header="Ações">
             <ng-template let-programa="rowData" pTemplate="body">
               <a (click)="selecionarPrograma(programa)" class="btn icon-btn btn-success">
-                <i class="btn-glyphicon fa fa-pencil-square-o img-circle text-success" aria-hidden="true"></i>
-              Editar
+                <i class="btn-glyphicon fa fa-pencil-square-o img-circle text-success" aria-hidden="true"></i> Editar
               </a>
-              <a (click)="selecionarPrograma(programa)" class="btn icon-btn btn-danger">
+              <a (click)="deletarPrograma(programa)" class="btn icon-btn btn-danger">
                 <i class="btn-glyphicon fa fa-pencil-square-o img-circle text-danger" aria-hidden="true"></i> Excluir
               </a>
             </ng-template>
@@ -36,3 +39,4 @@
     </div>
   </div>
 </div>
+<p-confirmDialog width="425"></p-confirmDialog>

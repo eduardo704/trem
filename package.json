@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/store": "^2.2.2",
     "angular2-toaster": "^3.0.1",
     "angularfire2": "^4.0.0-rc.0",
     "bootstrap": "^3.3.7",

@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-
+declare var $: any;
 import 'rxjs/Rx';
 import * as firebase from 'firebase/app';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { ErroAuthPt } from './erro-auth-pt.enum';
-
+import { ProgramaService } from './shared/programa.service';
+import { Router } from '@angular/router';
+import { Message } from 'primeng/primeng';
 
 @Component({
   selector: 'app-add-programa',
   templateUrl: './admin.component.html',
   //styleUrls: []
 })
-export class AdiminComponent implements OnInit {
+export class AdiminComponent implements OnInit, OnDestroy {
   user: Observable<firebase.User>;
   form: FormGroup;
   loggedInForm: FormGroup;
@@ -24,17 +26,24 @@ export class AdiminComponent implements OnInit {
   userListObservable: FirebaseListObservable<any>;
   userObservable: FirebaseObjectObservable<any>;
   messageError = '';
-
+  msgs: Message[] = [];
   loading = new Subject();
   carregando = false;
-  constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder, private db: AngularFireDatabase) {
+  msgsAs;
+  msgObj;
 
-   
+  constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder,
+    private db: AngularFireDatabase, private router: Router, private ps: ProgramaService) {
+
+  }
+  ngOnDestroy() {
+
   }
 
   ngOnInit() {
     this.loading.next(true);
     this.user = this.afAuth.authState;
+
     this.form = this
       .formBuilder
       .group({

@@ -1,81 +1,105 @@
 <div class="row">
-    <div class="col-lg-12 ">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <form novalidate [formGroup]="form" class="form-horizontal">
-                    <fieldset>
-                        <legend>Adicionar Programa</legend>
-                        <div class="form-group">
-                            <label for="inputTitulo" class="col-lg-2 control-label">Titulo</label>
-                            <div class="col-lg-10">
-                                <input formControlName="titulo" type="text" class="form-control" id="inputTitulo" placeholder="Titulo">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputDesc" class="col-lg-2 control-label">Descrição</label>
-                            <div class="col-lg-10">
-                                <textarea formControlName="desc" type="textArea" class="form-control" id="inputDesc" rows="10" placeholder="Descrição">
-                                </textarea>
-                               Máximo 600 characteres: Atual({{form.controls.desc.value.length}})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAudio" class="col-lg-2 control-label">Link do audio</label>
-                            <div class="col-lg-10">
-                                <input formControlName="audio" type="text" class="form-control" id="inputEmail" placeholder="Audio">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputImagem" class="col-lg-2 control-label">Link da Imagem</label>
-                            <div class="col-lg-10">
-                                <input formControlName="imagem" type="text" class="form-control" id="inputImagem" placeholder="Imagem">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label">Data</label>
-                            <div class="col-lg-10">
-                                <input formControlName="data" type="date" class="form-control" id="inputEmail" placeholder="Data">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-4 col-lg-offset-8">
-                                <button type="button" [disabled]="form.invalid" class=" col-sm-8 btn btn-block btn-success submit-button" (click)="abrir()">Salvar</button>
-                            </div>
-                        </div>
-                        <!--<button [disabled]="form.invalid" type="button" class="btn btn- submit-button" (click)="salvar()">Submit</button>-->
-
-                    </fieldset>
-                </form>
+  <div class="col-lg-12 ">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form novalidate [formGroup]="form" class="form-horizontal">
+          <fieldset>
+            <legend>Adicionar Programa</legend>
+            <div class="form-group">
+              <label for="inputTitulo" class="col-lg-2 control-label">Titulo</label>
+              <div class="col-lg-10">
+                <input formControlName="titulo" type="text" class="form-control" id="inputTitulo" placeholder="Titulo">
+              </div>
             </div>
-        </div>
+            <div class="form-group">
+              <label for="subTitulo" class="col-lg-2 control-label">Sub-Titulo</label>
+              <div class="col-lg-10">
+                <textarea formControlName="subTitulo" type="textArea" class="form-control" id="inputDesc" rows="3" placeholder="Sub-Titulo">
+                                </textarea> Máximo 600 characteres: Atual({{form.controls.subTitulo.value.length}})
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDesc" class="col-lg-2 control-label">Descrição</label>
+              <div class="col-lg-10">
+                <textarea formControlName="desc" type="textArea" class="form-control" id="inputDesc" rows="10" placeholder="Descrição">
+                                </textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAudio" class="col-lg-2 control-label">Link do audio</label>
+              <div class="col-lg-10">
+                <input formControlName="audio" type="text" class="form-control" id="inputEmail" placeholder="Audio">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputImagem" class="col-lg-2 control-label">Link da Imagem</label>
+              <div class="col-lg-9">
+                <input formControlName="imagem" type="text" class="form-control" id="inputImagem" placeholder="Imagem">
+              </div>
+              <div class="col-sm-1">
+                   <button type="text" class="btn btn-block btn-info" pButton (click)="op1.toggle($event)" icon="fa-eye"></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Data</label>
+              <div class="col-lg-10">
+                <input formControlName="data" type="date" class="form-control" id="inputEmail" placeholder="Data">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-4 col-lg-offset-8">
+                <div class="col-sm-6">
+                  <button type="button" [disabled]="form.invalid" class="btn btn-block btn-info submit-button" (click)="abrir()">Preview</button>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" [disabled]="form.invalid" class=" btn btn-block btn-success submit-button" (click)="salvar()">Salvar</button>
+                </div>
+              </div>
+            </div>
+            {{form}}
+          </fieldset>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" (click)="confirmar()">Sim</button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Preview Do programa</h4>
-            </div>
-            <div class="modal-body">
-                <!--<app-programa-card></app-programa-card>-->
-                <div *ngIf="preview">
-                    <app-programa-card [programa]="ultimoPrograma"></app-programa-card>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <label for="">Deseja Salvar o Programa:</label>
-                <button type="button" class="btn btn-danger btn-lg"   data-dismiss="modal" >Não</button>
-                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" (click)="confirmar()">Sim</button>
-
-            </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Preview Do programa</h4>
+      </div>
+      <div class="modal-body row">
+        <div *ngIf="preview">
+          <app-programa-card [programa]="ultimoPrograma"></app-programa-card>
         </div>
+      </div>
+      <div class="modal-footer">
+        <label for="">Deseja Salvar o Programa:</label>
+        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-success btn-lg" (click)="confirmar()">Sim</button>
+      </div>
     </div>
+  </div>
 </div>
 
-<p-growl [(value)]="msgs"></p-growl>
-https://ia601204.us.archive.org/31/items/TremDasOnze23DeAgostoDe2016SessoTremDasOnzeAEncruzilhadaENelsonCavaquinho/Trem%20das%20Onze%2023%20de%20agosto%20de%202016%20Sess%C3%A3o%20Trem%20das%20Onze%20A%20Encruzilhada%20e%20Nelson%20Cavaquinho.mp3<br>https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-0/s640x640/18527885_2288260371399214_2681176027033023945_n.jpg?oh=4de372eae8575cb3a5487b28d58d7755&oe=59BBBF2D
-
+<div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body row">
+        <div *ngIf="salvando" class="primary well text-center col-sm-8 col-sm-offset-2">
+          <h2 class="primary">Salvando... </h2>
+          <h2 class="primary"><i class="fa fa-spinner fa-spin"></i></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <p-overlayPanel #op1 [style]="{'width':'10%'}" [dismissable]="true"  >
+                <img class="img-responsive" src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-0/s640x640/18527885_2288260371399214_2681176027033023945_n.jpg?oh=4de372eae8575cb3a5487b28d58d7755&oe=59BBBF2D
+" alt="Galleria 1" />
+              </p-overlayPanel>
