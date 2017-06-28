@@ -15,12 +15,14 @@ import { environment } from '../environments/environment';
 import { IndexComponent } from './index/index.component';
 import { ProgramasModule } from './programas/programas.module';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,8 @@ import {MessagesModule} from 'primeng/primeng';
 import {OverlayPanelModule} from 'primeng/primeng';
 
 import {LightboxModule} from 'primeng/primeng';
-
+import { LoginComponent } from './login/login.component';
+import * as firebase from 'firebase';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,8 @@ import {LightboxModule} from 'primeng/primeng';
     AdiminComponent,
     EditProfileComponent,
     IndexAdminComponent,
-    AdminProgramaListComponent
+    AdminProgramaListComponent,
+    LoginComponent
   ],
   exports: [
     ReactiveFormsModule,
